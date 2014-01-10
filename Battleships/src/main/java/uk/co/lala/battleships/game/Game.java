@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Game {
+	
+	static World world = new World();
+	static FiringSolution fs = new FiringSolution();
 
 	public static void main(String[] args) {
 		//Ocean oc = new Ocean();
@@ -29,19 +32,19 @@ public class Game {
 	     
 	    try {
 		    System.out.println("Enter x coordinate");
-            x = Integer.parseInt(reader.readLine());
+            x = reader.read();
             System.out.println("Enter y coordinate");
-            y = Integer.parseInt(reader.readLine());
+            y = reader.read();
             
         } catch (IOException e) {
             e.printStackTrace();
         } 
 	    
+	    fs.fire();
 	    
-	     
-	     
-		
-		
+	    
 	}
+	
+	
 
 }
