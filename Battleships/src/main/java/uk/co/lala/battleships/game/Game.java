@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 
 public class Game {
 	
-	static World world = new World();
+	//Generate these numbers randomly?Dynamically?
+	
+	static World world = new World(10,10);
 	static FiringSolution fs = new FiringSolution();
 
 	public static void main(String[] args) {
