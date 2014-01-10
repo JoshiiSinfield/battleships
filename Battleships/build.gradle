@@ -1,9 +1,11 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin:'application'
 
 sourceCompatibility = 1.5
 version = '1.0'
 
+mainClassName = "uk.co.lala.battleships.game.Game"
 
 repositories { maven { url = "http://cdldevstrbld02:9090/nexus/content/groups/public/" } }
 
@@ -12,4 +14,8 @@ dependencies {
 	testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
+// http://stackoverflow.com/questions/13172137/console-application-with-java-and-gradle
+run{
+    standardInput = System.in
+}
 
