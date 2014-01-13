@@ -16,8 +16,8 @@ public class Game {
 		//ShipFactory shipFactory = new ShipFactory(); 
 		
 		String username = null;
-		int x;
-		int y;
+		String sX;
+		String sY;
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Please enter user name : ");
@@ -32,15 +32,22 @@ public class Game {
         }
 	    System.out.println("You entered : " + username);
 	     
-	    try {
+	try {
 		    System.out.println("Enter x coordinate");
-            x = reader.read();
-            System.out.println("Enter y coordinate");
-            y = reader.read();
-            
+            sX = reader.readLine();
+            int x = Integer.parseInt(sX);
+           
         } catch (IOException e) {
             e.printStackTrace();
-        } 
+        }
+        try {
+            System.out.println("Enter y coordinate");
+            sY = reader.readLine();
+            int y = Integer.parseInt(sY);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	    
 	    fs.fire();
 	    
