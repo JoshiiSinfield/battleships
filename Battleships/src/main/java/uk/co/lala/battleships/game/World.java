@@ -1,19 +1,16 @@
 package uk.co.lala.battleships.game;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import uk.co.lala.battleships.model.world.WorldObject;
+
 public class World {
-
-	private int[][] worldMap;
-
-	public World(int x, int y) {
-		this.setWorldMap(new int[x][y]);
+	
+	public World(int x, int y){
+		int worldSize = x * y;
+		List<WorldObject> listOfWorldObjects = new ArrayList<WorldObject>(worldSize);
 	}
 
-	public int[][] getWorldMap() {
-		return worldMap;
-	}
-
-	public void setWorldMap(int[][] worldMap) {
-		this.worldMap = worldMap;
-	}
-
+	
 }
