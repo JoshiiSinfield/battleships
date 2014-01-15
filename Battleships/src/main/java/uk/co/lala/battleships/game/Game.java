@@ -19,8 +19,11 @@ public class Game {
 		// ShipFactory shipFactory = new ShipFactory();
 
 		String username = null;
-		int x;
-		int y;
+		String sX;
+		String sY;
+		int x = 0;
+		int y = 0;
+		String direction = "V";
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
 				System.in));
@@ -38,10 +41,23 @@ public class Game {
 
 		try {
 			System.out.println("Enter x coordinate");
-			x = reader.read();
-			System.out.println("Enter y coordinate");
-			y = reader.read();
+			sX = reader.readLine();
+			x = Integer.parseInt(sX);
 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			System.out.println("Enter y coordinate");
+			sY = reader.readLine();
+			y = Integer.parseInt(sY);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			System.out.println("Enter direction (H or V)");
+			direction = reader.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -50,7 +66,6 @@ public class Game {
 
 		Ship catCarrier = new CatCarrier();
 		catCarrier.placeShip(x, y, direction);
-
 	}
 
 }
