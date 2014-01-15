@@ -35,13 +35,13 @@ public abstract class Ship {
 		this.type = type;
 	}
 
-	public void placeShip(int x, int y, char direction) {
+	public void placeShip(int x, int y, String direction) {
 
 		for (int i = 0; i < type.getSize(); i++)
-			if (direction == 'H') {
+			if (direction == "H") {
 				shipLocaitonX[i] = x + i;
 				shipLocaitonY[i] = y;
-			} else if (direction == 'V') {
+			} else if (direction == "V") {
 				shipLocaitonX[i] = x;
 				shipLocaitonY[i] = y + i;
 			} else {
