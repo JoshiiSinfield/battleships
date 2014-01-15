@@ -12,7 +12,9 @@ public abstract class Ship {
 	/**
 	 * the type of ship this is.
 	 */
-	private VesselType type = VesselType.SCOUT;
+	private VesselType type;
+	private int[] shipLocaitonX;
+	private int[] shipLocaitonY;
 
 	/**
 	 * Retrieve the {@link VesselType} of this ship.
@@ -29,8 +31,22 @@ public abstract class Ship {
 	 * @param type
 	 *            the {@link VesselType} this ship is.
 	 */
-	public void setType(VesselType type) {
+	protected void setType(VesselType type) {
 		this.type = type;
+	}
+
+	public void placeShip(int x, int y, char direction) {
+
+		for (int i = 0; i < type.getSize(); i++)
+			if (direction == 'H') {
+				shipLocaitonX[i] = x + i;
+				shipLocaitonY[i] = y;
+			} else if (direction == 'V') {
+				shipLocaitonX[i] = x;
+				shipLocaitonY[i] = y + i;
+			} else {
+				throw new IllegalArgumentException("Invalid ship direction");
+			}
 	}
 
 }
