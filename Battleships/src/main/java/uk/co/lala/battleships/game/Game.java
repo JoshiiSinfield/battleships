@@ -18,12 +18,16 @@ public class Game {
 		// Ocean oc = new Ocean();
 		// ShipFactory shipFactory = new ShipFactory();
 
+
 		String username = null;
 		String sX;
 		String sY;
+                String result;
 		int x = 0;
 		int y = 0;
-		String direction = "V";
+
+                Ship catCarrier = new CatCarrier();
+		catCarrier.placeShip(1, 1,"H");
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
 				System.in));
@@ -37,7 +41,20 @@ public class Game {
 		if (username.equals("")) {
 			username = "Jimbo";
 		}
-		System.out.println("You entered : " + username);
+                if(username.toLowerCase().equals("harvy")){
+		System.out.println("welcome " + username + ", destroyer of mighty the octopus monster cheese!");
+                }
+                else if(username.toLowerCase().equals("joshii"))
+                {
+                System.out.println("yaaaarr " + username + ", shiver me timbers lets sink us some ships!");
+                }
+                else if(username.toLowerCase().equals("steve"))
+                {
+                System.out.println("oi " + username + " don't you have some shares to check!");
+                }
+                else System.out.println("who the hell is "  + username + "...");
+
+                while (catCarrier.isSunk() != true){
 
 		try {
 			System.out.println("Enter x coordinate");
@@ -55,17 +72,12 @@ public class Game {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		try {
-			System.out.println("Enter direction (H or V)");
-			direction = reader.readLine();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+                    result = catCarrier.checkYourself(x, y);
+                    System.out.println(result);
+                }
+		
 
-		fs.fire();
-
-		Ship catCarrier = new CatCarrier();
-		catCarrier.placeShip(x, y, direction);
+		
 	}
 
 }

@@ -13,8 +13,9 @@ public abstract class Ship {
 	 * the type of ship this is.
 	 */
 	private VesselType type;
-	private int[] shipLocaitonX;
-	private int[] shipLocaitonY;
+	private int[] shipLocationX;
+	private int[] shipLocationY;
+        private int size;
 
 	/**
 	 * Retrieve the {@link VesselType} of this ship.
@@ -33,24 +34,49 @@ public abstract class Ship {
 	 */
 	protected void setType(VesselType type) {
 		this.type = type;
+                size = type.getSize();
 	}
 
 	public void placeShip(int x, int y, String direction) {
 
-		int size = type.getSize();
-		shipLocaitonX = new int[size];
-		shipLocaitonY = new int[size];
+		
+		shipLocationX = new int[size];
+		shipLocationY = new int[size];
 
 		for (int i = 0; i < size; i++)
 			if (direction.equals("H")) {
-				shipLocaitonX[i] = x + i;
-				shipLocaitonY[i] = y;
+				shipLocationX[i] = x + i;
+				shipLocationY[i] = y;
 			} else if (direction.equals("V")) {
-				shipLocaitonX[i] = x;
-				shipLocaitonY[i] = y + i;
+				shipLocationX[i] = x;
+				shipLocationY[i] = y + i;
 			} else {
 				throw new IllegalArgumentException("Invalid ship direction");
 			}
 	}
+
+        public String checkYourself(int x, int y){
+
+        for (int i = 0; i < size; i++)
+            if (shipLocationX[i] == x
+                && shipLocationY[i] == y ){
+                shipLocationX[i] = 0;
+                shipLocationY[i] = 0;
+                if (this.isSunk() ==  true)
+                {return "Sunk!"; }
+                else return "Hit!";
+            }
+        return "Miss!";
+        }
+
+        public boolean isSunk(){
+            int f = 0;
+            for (int i = 0; i < size; i++){
+                f = f + shipLocationX[i];
+            }
+            
+            if (f == 0) return true;
+            else return false;
+        }
 
 }
