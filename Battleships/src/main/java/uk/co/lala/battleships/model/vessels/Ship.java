@@ -37,11 +37,15 @@ public abstract class Ship {
 
 	public void placeShip(int x, int y, String direction) {
 
-		for (int i = 0; i < type.getSize(); i++)
-			if (direction == "H") {
+		int size = type.getSize();
+		shipLocaitonX = new int[size];
+		shipLocaitonY = new int[size];
+
+		for (int i = 0; i < size; i++)
+			if (direction.equals("H")) {
 				shipLocaitonX[i] = x + i;
 				shipLocaitonY[i] = y;
-			} else if (direction == "V") {
+			} else if (direction.equals("V")) {
 				shipLocaitonX[i] = x;
 				shipLocaitonY[i] = y + i;
 			} else {
